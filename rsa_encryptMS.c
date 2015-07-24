@@ -6,13 +6,13 @@
 
 //17 = 1*2^0 + (8*2^1) 
 
-const int e = 17;
-const int d = 2753;
-const int N = 3233;
+const unsigned long long int e = 17;
+const unsigned long long int d = 2753;
+const unsigned long long int N = 3233;
 
-int multiply_square(int P, int exponent, int num_bits)
+unsigned long long int multiply_square(unsigned long long int P, unsigned long long int exponent, int num_bits)
 {
-	int Z = 1;
+	unsigned long long int Z = 1;
 	for(int i = 0; i < num_bits; i++)
 	{
         if((exponent >> i) & 1)
@@ -26,33 +26,23 @@ int multiply_square(int P, int exponent, int num_bits)
 	return Z;
 }
 
-int encrypt(int plaintext)
+unsigned long long int encrypt(unsigned long long int plaintext)
 {
-	printf("Plaintext is: %d\n", plaintext);
-
-	int ciphertext = multiply_square(plaintext, e, 5);
-
-	printf("Ciphertext is: %d\n", ciphertext);
-	return ciphertext;
+	  unsigned long long int ciphertext = multiply_square(plaintext, e, 5);
+	  return ciphertext;
 }
 
-int decrypt(int ciphertext)
+unsigned long long int decrypt(unsigned long long int ciphertext)
 {
-    printf("Ciphertext is %d\n", ciphertext);
-    
-    int plaintext = multiply_square(ciphertext, d, 12);
-    
-    printf("Plaintext is %d\n", plaintext);
+    unsigned long long int plaintext = multiply_square(ciphertext, d, 12);
     return plaintext;
 }
 
 int main()
 {
-    double startTime = (float)clock()/CLOCKS_PER_SEC;
-	decrypt(encrypt(3230));
-    double endTime = (float)clock()/CLOCKS_PER_SEC;
-
-    double timeElapsed = endTime - startTime;
-    printf("Time elapsed: %lf", timeElapsed);
+    for(int i=0; i < 10000; i++)
+    {
+	    decrypt(encrypt(3231));
+    }
 	return 1;
 }
