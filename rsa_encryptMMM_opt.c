@@ -52,7 +52,6 @@ unsigned long long int multiply_square(unsigned long long int P, unsigned long l
 unsigned long long int encrypt(unsigned long long int plaintext)
 {
 	//printf("Plaintext is: %llu\n", plaintext);
-
 	unsigned long long int ciphertext = multiply_square(plaintext, e);
 
 	//printf("Ciphertext is: %llu\n", ciphertext);
@@ -62,7 +61,7 @@ unsigned long long int encrypt(unsigned long long int plaintext)
 unsigned long long int decrypt(unsigned long long int ciphertext)
 {
     //printf("Ciphertext is %llu\n", ciphertext);
-    
+  
     unsigned long long int plaintext = multiply_square(ciphertext, d);
     
     //printf("Plaintext is %llu\n", plaintext);
@@ -71,15 +70,9 @@ unsigned long long int decrypt(unsigned long long int ciphertext)
 
 int main()
 {
- //   double startTime = (float)clock();///CLOCKS_PER_SEC;
     for(int i = 0; i < 10000; i++)
 	{
 		decrypt(encrypt(3231ULL));
 	}
-	//printf("\nIt is: %d", (4 >> 1));
-	//double endTime = (float)clock();///CLOCKS_PER_SEC;
-
-    //double timeElapsed = endTime - startTime;
-    //printf("Time elapsed: %lf", timeElapsed);
 	return 1;
 }

@@ -54,21 +54,21 @@ unsigned long long int multiply_square(unsigned long long int P, unsigned long l
 
 unsigned long long int encrypt(unsigned long long int plaintext)
 {
-	printf("Plaintext is: %llu\n", plaintext);
+	//printf("Plaintext is: %llu\n", plaintext);
 
 	unsigned long long int ciphertext = multiply_square(plaintext, e);
 
-	printf("Ciphertext is: %llu\n", ciphertext);
+	//printf("Ciphertext is: %llu\n", ciphertext);
 	return ciphertext;
 }
 
 unsigned long long int decrypt(unsigned long long int ciphertext)
 {
-    printf("Ciphertext is %llu\n", ciphertext);
+    //printf("Ciphertext is %llu\n", ciphertext);
     
     unsigned long long int plaintext = multiply_square(ciphertext, d);
     
-    printf("Plaintext is %llu\n", plaintext);
+    //printf("Plaintext is %llu\n", plaintext);
     return plaintext;
 }
 

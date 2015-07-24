@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <time.h>
 
-// 64 bit stuff //
 const unsigned long long int N = 3233ULL;
 const unsigned long long int e = 17ULL;
 const unsigned long long int d = 2753ULL;
@@ -70,15 +69,9 @@ unsigned long long int decrypt(unsigned long long int ciphertext)
 
 int main()
 {
-    //double startTime = (float)clock();///CLOCKS_PER_SEC;
 	for(int i = 0; i < 10000; i++)
 	{
 		decrypt(encrypt(3231ULL));
 	}
-	
-	//double endTime = (float)clock();///CLOCKS_PER_SEC;
-
-    //double timeElapsed = endTime - startTime;
-    //printf("Time elapsed: %lf", timeElapsed);
 	return 1;
 }
