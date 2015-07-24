@@ -7,14 +7,15 @@ const unsigned long long int e = 17ULL;
 const unsigned long long int d = 2753ULL;
 const int num_bits = 12;
 
-unsigned long long int montgomery_multiply(unsigned long long int X, unsigned long long int Y)
+unsigned long long int montgomery_multiply(unsigned long long int X, 
+										   unsigned long long int Y)
 {
 	unsigned long long int T = 0;
 	unsigned long long int n;
 	for(int i = 0; i < num_bits; i++)
 	{
-		n = (T & 1) + (((X >> i) & 1) * (Y & 1));
-		T = (T + (((X >> i) & 1) * Y) + (n * N)) / 2;
+		n = (T & 1) + (((X >> i) & 1) & (Y & 1));
+		T = (T + (((X >> i) & 1) ? Y : 0) + (n * N)) >> 1;
 	}
 	if ( T >= N)
 	{
@@ -70,10 +71,10 @@ unsigned long long int decrypt(unsigned long long int ciphertext)
 
 int main()
 {
-    double startTime = (float)clock()/CLOCKS_PER_SEC;
-	//decrypt(encrypt(3231ULL));
-	printf("\nIt is: %d", (4 >> 1));
-	double endTime = (float)clock()/CLOCKS_PER_SEC;
+    double startTime = (float)clock();///CLOCKS_PER_SEC;
+	decrypt(encrypt(3228ULL));
+	//printf("\nIt is: %d", (4 >> 1));
+	double endTime = (float)clock();///CLOCKS_PER_SEC;
 
     double timeElapsed = endTime - startTime;
     printf("Time elapsed: %lf", timeElapsed);
