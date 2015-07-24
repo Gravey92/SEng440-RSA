@@ -2,11 +2,11 @@
 #include <time.h>
 
 
-const int e = 17;
-const int d = 2753;
-const int N = 3233;
+const unsigned long long int e = 17;
+const unsigned long long int d = 2753;
+const unsigned long long int N = 3233;
 
-int generate_table(unsigned long long int x, unsigned long long int * table2, int table_size)
+unsigned long long int generate_table(unsigned long long int x, unsigned long long int * table2, int table_size)
 {
     table2[0] = x;
     for(int i = 1; i < table_size; i++)
@@ -16,7 +16,7 @@ int generate_table(unsigned long long int x, unsigned long long int * table2, in
     return 0;
 }
 
-int encrypt(int plaintext)
+unsigned long long int encrypt(unsigned long long int plaintext)
 {
     unsigned long long int lookup[5];
     generate_table(plaintext, lookup, 5);
@@ -24,7 +24,7 @@ int encrypt(int plaintext)
 	  return ciphertext;
 }
 
-int decrypt(int ciphertext)
+unsigned long long int decrypt(unsigned long long int ciphertext)
 {
     unsigned long long int lookup[12];
     generate_table(ciphertext, lookup, 12);
@@ -39,7 +39,7 @@ int main()
 {
   for(int i = 0; i < 10000; i++)
   {
-	  decrypt(encrypt(3231));
+	  decrypt(encrypt(3231ULL));
   }
 	return 1;
 }

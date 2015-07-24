@@ -42,7 +42,7 @@ int main()
 {
     for(int i=0; i < 10000; i++)
     {
-	    decrypt(encrypt(3231));
+	    decrypt(encrypt(3231ULL));
     }
 	return 1;
 }
