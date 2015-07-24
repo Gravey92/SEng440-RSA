@@ -72,7 +72,10 @@ unsigned long long int decrypt(unsigned long long int ciphertext)
 int main()
 {
     double startTime = (float)clock();///CLOCKS_PER_SEC;
-	decrypt(encrypt(3228ULL));
+    for(int i = 0; i < 10000; i++)
+	{
+		decrypt(encrypt(3228ULL));
+	}
 	//printf("\nIt is: %d", (4 >> 1));
 	double endTime = (float)clock();///CLOCKS_PER_SEC;
 
