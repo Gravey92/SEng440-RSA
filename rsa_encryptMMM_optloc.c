@@ -12,8 +12,8 @@ unsigned long long int montgomery_multiply(unsigned long long int X,
 {
 	unsigned long long int T = 0;
 	unsigned long long int n;
-  const int local_num_bits = 12;
-  const unsigned long long int local_N = 3233ULL;  
+    register int local_num_bits = 12;
+    register unsigned long long int local_N = 3233ULL;  
 
 	for(int i = 0; i < local_num_bits; i++)
 	{
