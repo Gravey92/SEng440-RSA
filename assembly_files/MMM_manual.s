@@ -49,14 +49,15 @@ montgomery_multiply:
 	stmfd	sp!, {r4, r5, r6, r7, r8, r9, sl, fp}
 	add	fp, sp, #28
 	sub	sp, sp, #32
-	mov r1, r2 @r0 is X, r1 is Y
-	mov	r2, #0 @T
-	mov	r3, #0 @i
-	mov r8, #3233 @r8 = N
-.L2:
+	mov r1, r2         @r0 is X, r1 is Y
+	mov	r2, #0         @T
+	mov	r3, #0         @i
+	mov r8, #3233      @r8 = N
 	mov r5, #1
 	and r6, r2, r5     @r6 = T & 1
+.L2:
 	mov r7, r0, lsr r3 @r7 = X >> i
+	mov r5, #1
 	and r7, r7, r5     @r7 = (X >> i) & 1
 	and r4, r2, r5     @r4 = Y & 1
     and r4, r7, r4     @r4 = ((X >> i) & 1) & Y
@@ -65,10 +66,10 @@ montgomery_multiply:
     cmp r7, #0
 	beq .L3
 	mov r5, r1         @r5 = Y if ((X>>1) & 1) = 1
-.L3	
-	mul r4, r4, r8     @r4 = n * N
+.L3:	
+	mul r7, r4, r8     @r7 = n * N
 	add r2, r2, r5     @r2 = T + (((X >> i) & 1) ? Y : 0)
-	add r2, r2, r4     @r2 = r2 + (n * N)
+	add r2, r2, r7     @r2 = r2 + (n * N)
 	mov r2, r2, lsr #1 @r2 = T
     add r3, r3, #1     @i += 1
 	cmp r3, r9         @i < num_bits?
