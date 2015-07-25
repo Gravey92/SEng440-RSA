@@ -52,7 +52,7 @@ montgomery_multiply:
 	mov r1, r2         @r0 is X, r1 is Y
 	mov	r2, #0         @T
 	mov	r3, #0         @i
-	mov r8, #3233      @r8 = N
+	ldr r8, =3233      @r8 = N
 	mov r5, #1
 	and r6, r2, r5     @r6 = T & 1
 .L2:
