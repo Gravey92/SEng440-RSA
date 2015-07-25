@@ -43,127 +43,122 @@ num_bits:
 	.global	montgomery_multiply
 	.type	montgomery_multiply, %function
 montgomery_multiply:
-	@ args = 0, pretend = 0, frame = 48
+	@ args = 0, pretend = 0, frame = 56
 	@ frame_needed = 1, uses_anonymous_args = 0
 	@ link register save eliminated.
 	stmfd	sp!, {r4, r5, r6, r7, r8, r9, sl, fp}
 	add	fp, sp, #28
-	sub	sp, sp, #48
-	str	r0, [fp, #-68]
-	str	r1, [fp, #-64]
-	str	r2, [fp, #-76]
-	str	r3, [fp, #-72]
-	mov	r2, #0
+	sub	sp, sp, #56
+	str	r0, [fp, #-60]
+	str	r1, [fp, #-56]
+	str	r2, [fp, #-68]
+	str	r3, [fp, #-64]
 	mov	r3, #0
-	str	r2, [fp, #-52]
+	mov	r4, #0
+	str	r3, [fp, #-44]
+	str	r4, [fp, #-40]
+	mov	r1, #12
+	str	r1, [fp, #-72]
+	ldr	r9, .L8
+	mov	sl, #0
+	mov	r3, #0
 	str	r3, [fp, #-48]
-	mov	r3, #12
-	str	r3, [fp, #-56]
-	ldr	r2, .L8
-	mov	r3, #0
-	str	r2, [fp, #-44]
-	str	r3, [fp, #-40]
-	mov	r3, #0
-	str	r3, [fp, #-60]
 	b	.L2
 .L5:
-	sub	r1, fp, #52
-	ldmia	r1, {r0-r1}
-	mov	r2, #1
-	mov	r3, #0
-	and	r8, r0, r2
-	and	r9, r1, r3
-	sub	r3, fp, #68
-	ldmia	r3, {r2-r3}
-	ldr	r1, [fp, #-60]
-	rsb	ip, r1, #32
-	sub	r0, r1, #32
-	mov	r4, r2, lsr r1
-	orr	r4, r4, r3, asl ip
-	orr	r4, r4, r3, lsr r0
-	mov	r5, r3, lsr r1
-	sub	r3, fp, #76
-	ldmia	r3, {r2-r3}
-	and	r0, r4, r2
+	sub	r2, fp, #44
+	ldmia	r2, {r1-r2}
+	mov	r3, #1
+	mov	r4, #0
+	and	r5, r1, r3
+	and	r6, r2, r4
+	str	r5, [fp, #-84]
+	str	r6, [fp, #-80]
+	sub	r4, fp, #60
+	ldmia	r4, {r3-r4}
+	ldr	r2, [fp, #-48]
+	rsb	r0, r2, #32
+	sub	r1, r2, #32
+	mov	r5, r3, lsr r2
+	orr	r5, r5, r4, asl r0
+	orr	r5, r5, r4, lsr r1
+	mov	r6, r4, lsr r2
+	sub	r4, fp, #68
+	ldmia	r4, {r3-r4}
 	and	r1, r5, r3
-	mov	r2, #1
-	mov	r3, #0
-	and	r2, r2, r0
+	and	r2, r6, r4
+	mov	r3, #1
+	mov	r4, #0
 	and	r3, r3, r1
-	adds	r2, r2, r8
-	adc	r3, r3, r9
-	str	r2, [fp, #-36]
-	str	r3, [fp, #-32]
-	sub	r3, fp, #68
-	ldmia	r3, {r2-r3}
-	ldr	r1, [fp, #-60]
-	rsb	ip, r1, #32
-	sub	r0, r1, #32
-	mov	r6, r2, lsr r1
-	orr	r6, r6, r3, asl ip
-	orr	r6, r6, r3, lsr r0
-	mov	r7, r3, lsr r1
-	mov	r2, #1
-	mov	r3, #0
-	and	r2, r2, r6
+	and	r4, r4, r2
+	sub	r2, fp, #84
+	ldmia	r2, {r1-r2}
+	adds	r3, r3, r1
+	adc	r4, r4, r2
+	str	r3, [fp, #-36]
+	str	r4, [fp, #-32]
+	sub	r4, fp, #60
+	ldmia	r4, {r3-r4}
+	ldr	r2, [fp, #-48]
+	rsb	r0, r2, #32
+	sub	r1, r2, #32
+	mov	r7, r3, lsr r2
+	orr	r7, r7, r4, asl r0
+	orr	r7, r7, r4, lsr r1
+	mov	r8, r4, lsr r2
+	mov	r3, #1
+	mov	r4, #0
 	and	r3, r3, r7
-	orrs	r1, r2, r3
+	and	r4, r4, r8
+	orrs	r2, r3, r4
 	beq	.L3
-	sub	r3, fp, #76
-	ldmia	r3, {r2-r3}
+	sub	r4, fp, #68
+	ldmia	r4, {r3-r4}
 	b	.L4
 .L3:
-	mov	r2, #0
 	mov	r3, #0
+	mov	r4, #0
 .L4:
-	sub	r1, fp, #52
-	ldmia	r1, {r0-r1}
-	adds	r0, r0, r2
-	adc	r1, r1, r3
+	sub	r2, fp, #44
+	ldmia	r2, {r1-r2}
+	adds	r1, r1, r3
+	adc	r2, r2, r4
+	ldr	r3, [fp, #-36]
+	mul	r0, sl, r3
 	ldr	r3, [fp, #-32]
-	ldr	r2, [fp, #-44]
-	mul	r2, r3, r2
-	ldr	r3, [fp, #-40]
+	mul	r3, r9, r3
+	add	r0, r0, r3
 	ldr	ip, [fp, #-36]
-	mul	r3, ip, r3
-	add	ip, r2, r3
-	ldr	sl, [fp, #-36]
-	ldr	r8, [fp, #-44]
-	umull	r2, r3, sl, r8
-	add	ip, ip, r3
-	mov	r3, ip
-	adds	r2, r2, r0
-	adc	r3, r3, r1
-	movs	r3, r3, lsr #1
-	mov	r2, r2, rrx
-	str	r2, [fp, #-52]
-	str	r3, [fp, #-48]
-	ldr	r3, [fp, #-60]
+	umull	r3, r4, ip, r9
+	add	r0, r0, r4
+	mov	r4, r0
+	adds	r3, r3, r1
+	adc	r4, r4, r2
+	movs	r4, r4, lsr #1
+	mov	r3, r3, rrx
+	str	r3, [fp, #-44]
+	str	r4, [fp, #-40]
+	ldr	r3, [fp, #-48]
 	add	r3, r3, #1
-	str	r3, [fp, #-60]
+	str	r3, [fp, #-48]
 .L2:
-	ldr	r2, [fp, #-60]
-	ldr	r3, [fp, #-56]
-	cmp	r2, r3
+	ldr	r3, [fp, #-48]
+	ldr	r1, [fp, #-72]
+	cmp	r3, r1
 	blt	.L5
-	sub	r2, fp, #52
-	ldmia	r2, {r1-r2}
 	sub	r4, fp, #44
 	ldmia	r4, {r3-r4}
-	cmp	r2, r4
+	cmp	r4, sl
 	it eq
-	cmpeq	r1, r3
+	cmpeq	r3, r9
 	bcc	.L6
-	sub	r2, fp, #52
-	ldmia	r2, {r1-r2}
 	sub	r4, fp, #44
 	ldmia	r4, {r3-r4}
-	subs	r3, r1, r3
-	sbc	r4, r2, r4
-	str	r3, [fp, #-52]
-	str	r4, [fp, #-48]
+	subs	r3, r3, r9
+	sbc	r4, r4, sl
+	str	r3, [fp, #-44]
+	str	r4, [fp, #-40]
 .L6:
-	sub	r4, fp, #52
+	sub	r4, fp, #44
 	ldmia	r4, {r3-r4}
 	mov	r0, r3
 	mov	r1, r4
